@@ -1,4 +1,4 @@
 // vite.config.js
 export default {
-    base: '/post-baby/',
+    base: 'https://post-baby.site/',
   }
