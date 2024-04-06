@@ -65,8 +65,8 @@ repoImg.src = reponPng
 repoImg.alt='button repository'
 repoImg.height='64'
 
-const repoLink = button()
-repoLink.href='https://www.buymeacoffee.com/eamarquezh'
+const repoLink = a()
+repoLink.href='https://github.com/eamarquezh/post-baby'
 repoLink.target='_blank'
 repoLink.appendChild(repoImg)
 
