@@ -15,11 +15,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #f1c40f;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #f1c40f;
 }
 
 body {
@@ -34,7 +34,7 @@ body {
 h1 {
   font-size: 2.5em;
   line-height: 1;
-  color: orange;
+  color: #f1c40f;
 }
 
 #app {
@@ -71,6 +71,9 @@ h1 {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2em;
 }
 
@@ -113,6 +116,8 @@ button {
   border-radius: 8px;
   border: 1px solid #ffffff;
   padding: 0.6em 1.2em;
+  margin: .2em;
+  width: 20vh;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -127,6 +132,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {

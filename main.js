@@ -10,6 +10,8 @@ const input = ()=>{return document.createElement('input')}
 const button = ()=>{return document.createElement('button')}
 const br = ()=>{return document.createElement('br')}
 const pre = ()=>{return document.createElement('pre')}
+const form = ()=>{return document.createElement('form')}
+const div = ()=>{return document.createElement('div')}
 const a = ()=>{return document.createElement('a')}
 
 
@@ -17,7 +19,7 @@ const app = document.querySelector('#app');
 let json = ''
 
 const title = h1()
-title.textContent='postBaby'
+title.textContent='AstronApi'
 
 const postBaby = img()
 postBaby.src = logoPostBaby
@@ -27,12 +29,24 @@ postBaby.alt='post baby logo'
 const description = p()
 description.textContent ='Test you API public no auth'
 
+
+const contForm = form()
+contForm.id='myForm'
+contForm.className='card'
+
+const theCapcha = div()
+theCapcha.className="g-recaptcha"
+theCapcha.setAttribute('data-sitekey', '6LfVMMYpAAAAAKo0DW1zLdCq4q1-LUATqF-z124d')
+
+
 const way = input()
 way.placeholder ='Enter URL'
 way.value = ''
 
 const btnTest = button()
 btnTest.textContent='Test'
+btnTest.type='submit'
+btnTest.value='Enviar formulario'
 
 const btnClean = button()
 btnClean.textContent='Clean'
@@ -76,10 +90,12 @@ app.appendChild(title)
 app.appendChild(postBaby)
 app.appendChild(description)
 app.appendChild(br())
-app.appendChild(way)
-app.appendChild(br())
-app.appendChild(btnTest)
-app.appendChild(btnClean)
+app.appendChild(contForm)
+contForm.appendChild(theCapcha)
+contForm.appendChild(way)
+contForm.appendChild(br())
+contForm.appendChild(btnTest)
+contForm.appendChild(btnClean)
 app.appendChild(br())
 app.appendChild(responseT)
 app.appendChild(br())
@@ -90,18 +106,27 @@ app.appendChild(textoCode)
 app.appendChild(repoLink)
 
 btnClean.addEventListener('click', () => {
-    responseT.textContent = ``;
-    way.value = ``;
+    responseT.textContent = ``
+    way.value = ``
 });
 
-btnTest.addEventListener('click', async () => {
-    try {
-        const data = await fetchCall(way.value);
-        updateResponseT(data);
-    } catch (error) {
-        responseT.textContent = `Error ${error}`;
+contForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+    var response = grecaptcha.getResponse();
+    
+    if(response.length == 0) {
+        responseT.textContent = `Aseguranos que no eres un robot`
+    } else {
+    let tiempoAleatorio = Math.floor(Math.random() * 5000) + 1000
+      try {
+            const data = await fetchCall(way.value)
+            updateResponseT(data);
+        } catch (error) {
+            responseT.textContent = `Error ${error}`
+        }
     }
-});
+  });
 
 
 
