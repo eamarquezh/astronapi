@@ -1,4 +1,4 @@
 // vite.config.js
 export default {
-    base: 'https://post-baby.site/',
+    base: 'https://eamarquezh.github.io/post-baby/',
   }
